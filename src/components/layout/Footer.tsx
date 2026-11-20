@@ -7,7 +7,7 @@ import { FooterWordmark } from "./FooterWordmark";
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-navy text-ivory">
-      <div className="container-x pt-20 md:pt-28">
+      <div className="container-x pt-20 md:pt-14">
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
             <Logo className="h-12" />

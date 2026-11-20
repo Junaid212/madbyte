@@ -24,7 +24,7 @@ export default function AboutPage() {
       <PageHero
         label="About MADBYTE"
         title={"Creative enough\nto be *mad.*\nSkilled enough\nto deliver."}
-        intro="We're an independent studio of six founders who got tired of choosing between work that's interesting and work that's dependable. So we built a company that does both."
+        // intro="We're an independent studio of six founders who got tired of choosing between work that's interesting and work that's dependable. So we built a company that does both."
       />
 
       {/* Story */}
@@ -96,7 +96,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="on-light bg-mist py-24 text-navy md:py-40">
+      {/* <section className="on-light bg-mist py-24 text-navy md:py-40">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -119,20 +119,20 @@ export default function AboutPage() {
             ))}
           </Reveal>
         </div>
-      </section>
+      </section> */}
 
       {/* Mission / vision / values */}
-      <section className="bg-navy py-24 text-ivory md:py-40">
+      <section className="on-light bg-ivory py-24 text-navy md:py-40">
         <div className="container-x">
           <div className="grid gap-16 md:grid-cols-2 md:gap-24">
             <Reveal>
-              <p className="label text-champagne">Mission</p>
+              <p className="label text-navy-2">Mission</p>
               <p className="display mt-6 text-[clamp(1.8rem,3.4vw,3.2rem)] leading-[1.05]">
                 To make ambitious businesses impossible to ignore, online and in the real world.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
-              <p className="label text-champagne">Vision</p>
+              <p className="label text-navy-2">Vision</p>
               <p className="display mt-6 text-[clamp(1.8rem,3.4vw,3.2rem)] leading-[1.05]">
                 A world where &ldquo;digital transformation&rdquo; means something people actually enjoy.
               </p>
@@ -146,11 +146,11 @@ export default function AboutPage() {
                 <li key={v.title}>
                   <Divider />
                   <Reveal className="group grid items-baseline gap-3 py-7 md:grid-cols-12 md:gap-8 md:py-9">
-                    <span className="label text-champagne md:col-span-1">0{i + 1}</span>
+                    <span className="label text-navy-2 md:col-span-1">0{i + 1}</span>
                     <h3 className="display text-[clamp(1.8rem,4vw,3.6rem)] leading-none transition-transform duration-500 group-hover:translate-x-3 md:col-span-6">
                       {v.title}
                     </h3>
-                    <p className="text-ivory/75 md:col-span-5">{v.text}</p>
+                    <p className="text-navy-2 md:col-span-5">{v.text}</p>
                   </Reveal>
                 </li>
               ))}

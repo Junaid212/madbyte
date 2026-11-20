@@ -2,6 +2,7 @@ import { SplitText } from "@/components/ui/SplitText";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { Parallax } from "@/components/ui/Parallax";
+import { Logo } from "@/components/layout/Logo";
 
 interface Props {
   title?: string;
@@ -18,22 +19,26 @@ export function CtaBand({
   href = "/contact",
 }: Props) {
   return (
-    <section className="on-light relative overflow-hidden bg-champagne py-28 text-navy md:py-44">
-      <Parallax distance={-120} className="pointer-events-none absolute -right-[12vw] top-1/2 -translate-y-1/2">
-        <svg aria-hidden viewBox="0 0 400 400" className="spin-slow size-[min(70vw,680px)] opacity-[0.14]">
-          <circle cx="200" cy="200" r="190" fill="none" stroke="#182D4C" strokeWidth="2" strokeDasharray="3 9" />
-          <circle cx="200" cy="200" r="120" fill="none" stroke="#182D4C" strokeWidth="2" />
-          <rect x="140" y="140" width="120" height="120" fill="#182D4C" />
-        </svg>
+    <section className="bg-navy px-3 py-4 sm:px-5 md:px-8 md:py-8">
+      <div className="on-light relative mx-auto max-w-[1760px] overflow-hidden rounded-[1.5rem] bg-champagne py-12 text-navy md:rounded-[2.25rem] md:py-16">
+      {/* Oversized faint logo watermark */}
+      <Parallax distance={-60} className="pointer-events-none absolute -left-[4vw] top-1/2 -translate-y-1/2">
+        <Logo aria-hidden className="!h-auto w-[min(125vw,1500px)] text-navy opacity-[0.08]" />
       </Parallax>
-      <div className="container-x relative">
-        <SplitText as="h2" text={title} accentClassName="text-navy-2 italic" className="display text-mega" />
-        <Reveal className="mt-10 flex flex-col gap-10 md:flex-row md:items-center md:gap-16">
+      {/* Solid logo, bottom right */}
+      <Logo
+        aria-hidden
+        className="pointer-events-none absolute bottom-4 right-4 !h-auto w-[min(46vw,520px)] text-navy md:bottom-8 md:right-10"
+      />
+      <div className="relative px-6 md:px-12 lg:px-16">
+        <SplitText as="h2" text={title} accentClassName="text-navy-2 italic" className="display text-[clamp(2.5rem,6.2vw,5.75rem)] leading-[0.92]" />
+        <Reveal className="mt-4 flex flex-col gap-6 md:flex-row md:items-center md:gap-12">
           <p className="max-w-sm text-lead font-medium">{text}</p>
           <MagneticButton href={href} variant="navy" className="px-9 py-5 text-base">
             {cta}
           </MagneticButton>
         </Reveal>
+      </div>
       </div>
     </section>
   );

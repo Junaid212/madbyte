@@ -11,7 +11,7 @@ interface Props {
 /** Dark editorial hero shared by inner pages. */
 export function PageHero({ label, title, intro, children }: Props) {
   return (
-    <section className="grain relative isolate overflow-hidden bg-navy pb-20 pt-36 text-ivory md:pb-32 md:pt-48">
+    <section className="grain relative isolate overflow-hidden bg-navy pb-20 pt-36 text-ivory md:pb-32 md:pt-28">
       <div
         aria-hidden
         className="absolute inset-0 -z-10 opacity-[0.06]"
@@ -22,7 +22,7 @@ export function PageHero({ label, title, intro, children }: Props) {
           maskImage: "radial-gradient(ellipse at 80% 20%, black, transparent 70%)",
         }}
       />
-      <div aria-hidden className="absolute -right-32 -top-32 -z-10 size-[50vw] rounded-full bg-navy-2/60 blur-3xl" />
+      <div aria-hidden className="absolute -right-32 -top-32 -z-10 size-[20vw] rounded-full bg-navy-2/60 blur-3xl" />
       <div className="container-x">
         <SectionLabel>{label}</SectionLabel>
         <SplitText as="h1" text={title} trigger="load" delay={0.15} className="display mt-8 text-mega" />

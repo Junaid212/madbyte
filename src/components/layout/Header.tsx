@@ -72,7 +72,7 @@ export function Header() {
                   aria-current={active ? "page" : undefined}
                   className="relative flex items-baseline gap-2 text-sm font-medium tracking-wide"
                 >
-                  <span className="label text-[0.6rem] text-champagne/80">0{i + 1}</span>
+                  {/* <span className="label text-[0.6rem] text-champagne/80">0{i + 1}</span> */}
                   <span className="roll">
                     <span data-text={item.label}>{item.label}</span>
                   </span>
@@ -142,7 +142,7 @@ export function Header() {
                           aria-current={active ? "page" : undefined}
                           className="display flex items-baseline gap-4 py-1 text-[clamp(2.6rem,13vw,5rem)] leading-[1.05]"
                         >
-                          <span className="label text-xs text-champagne">0{i + 1}</span>
+                          {/* <span className="label text-xs text-champagne">0{i + 1}</span> */}
                           <span className={cn(active && "text-champagne")}>{item.label}</span>
                         </TransitionLink>
                       </motion.div>

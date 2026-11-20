@@ -34,7 +34,7 @@ export default function ServicesPage() {
       <PageHero
         label="Services"
         title={"Four divisions.\nNo *silos.*"}
-        intro="Pick one when you know exactly what you need. Combine them when you want one team that sees the whole picture."
+        // intro="Pick one when you know exactly what you need. Combine them when you want one team that sees the whole picture."
       >
         <nav aria-label="Service divisions" className="mt-14 flex flex-wrap gap-3">
           {["build", "design", "create", "grow"].map((id) => (
