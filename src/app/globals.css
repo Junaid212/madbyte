@@ -1,26 +1,328 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-navy: #182d4c;
+  --color-navy-2: #30415f;
+  --color-ivory: #efefed;
+  --color-mist: #e3e5e7;
+  --color-champagne: #dec6a6;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dmsans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --text-mega: clamp(2.5rem, 8.8vw, 10.5rem);
+  --text-mega--line-height: 0.9;
+  --text-huge: clamp(2.4rem, 7.2vw, 8rem);
+  --text-huge--line-height: 0.92;
+  --text-big: clamp(1.9rem, 4.6vw, 4.75rem);
+  --text-big--line-height: 1;
+  --text-lead: clamp(1.1rem, 1.5vw, 1.45rem);
+  --text-lead--line-height: 1.55;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* Larger display type on phones (headline wraps to two lines, still fits) */
+@media (max-width: 639px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --text-mega: clamp(2.5rem, 10.8vw, 3.6rem);
+    --text-huge: clamp(2.4rem, 12vw, 4rem);
   }
 }
 
+/* ---------- Base ---------- */
+html {
+  background: var(--color-navy);
+  scroll-behavior: auto;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-navy);
+  color: var(--color-ivory);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: var(--color-champagne);
+  color: var(--color-navy);
+}
+:focus-visible {
+  outline: 2px solid var(--color-champagne);
+  outline-offset: 3px;
+}
+.on-light :focus-visible {
+  outline-color: var(--color-navy);
+}
+
+/* ---------- Layout helpers ---------- */
+.container-x {
+  width: 100%;
+  max-width: 1760px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- Animated underline link ---------- */
+.u-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.5s var(--ease-out-expo);
+  padding-bottom: 2px;
+}
+.u-link:hover,
+.u-link:focus-visible,
+.u-link[aria-current="page"] {
+  background-position: 0% 100%;
+  background-size: 100% 1px;
+}
+
+/* ---------- Letter roll (hover text swap) ---------- */
+.roll {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  height: 1.25em;
+  line-height: 1.25;
+}
+.roll > span {
+  display: block;
+  transition: transform 0.55s var(--ease-out-expo);
+}
+.roll > span::after {
+  content: attr(data-text);
+  display: block;
+}
+a:hover > .roll > span,
+button:hover > .roll > span,
+a:focus-visible > .roll > span,
+button:focus-visible > .roll > span,
+.roll-host:hover .roll > span {
+  transform: translateY(-100%);
+}
+
+/* ---------- Scroll animation initial states ----------
+   `anim` is added to <html> by an inline script (layout.tsx) only when the
+   user has NOT asked for reduced motion. Without it, everything is visible. */
+.anim .split-i {
+  transform: translateY(112%);
+}
+.anim [data-reveal="up"],
+.anim [data-reveal="fade"],
+.anim [data-reveal="children"] > * {
+  opacity: 0;
+}
+.anim [data-reveal="up"],
+.anim [data-reveal="children"] > * {
+  transform: translateY(36px);
+}
+.anim [data-depth],
+.anim [data-intro] {
+  opacity: 0;
+}
+.anim [data-reveal="clip"] {
+  clip-path: inset(100% 0 0 0);
+}
+.anim [data-scrub] .sw {
+  opacity: 0.16;
+}
+.split-w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+  padding-right: 0.14em;
+  margin-right: -0.14em;
+  padding-left: 0.03em;
+  margin-left: -0.03em;
+}
+.split-i {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------- Hero visual animations ---------- */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+  35% {
+    transform: rotate(6deg) translateY(-10px);
+  }
+  70% {
+    transform: rotate(-9deg) translateY(6px);
+  }
+}
+@keyframes bit {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.12;
+  }
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+.spin-slow {
+  animation: spin-slow 60s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.spin-rev {
+  animation: spin-rev 40s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.wobble {
+  animation: wobble 7s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.bit {
+  animation: bit 3.2s steps(1) infinite;
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin-slow,
+  .spin-rev,
+  .wobble,
+  .bit,
+  .marquee-track {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Horizontal process (desktop only, enabled from JS) */
+[data-hscroll="on"] .hs-track {
+  display: flex;
+  width: max-content;
+  max-width: none;
+  gap: clamp(2rem, 4vw, 5rem);
+  padding-right: 12vw;
+}
+[data-hscroll="on"] .hs-step {
+  display: block;
+  flex: none;
+  width: min(34vw, 520px);
+  padding-top: 2rem;
+}
+[data-hscroll="on"] .hs-step > div {
+  margin-top: 1.5rem;
+}
+[data-hscroll="on"] .hs-pin {
+  position: sticky;
+  top: 0;
+  padding-block: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* Champagne text fails contrast on light surfaces: use secondary navy there. */
+.on-light .label-num {
+  color: var(--color-navy-2);
+}
+
+/* Printing / full-page capture: never leave content in its pre-animation state. */
+.reveal-all .split-i,
+.reveal-all [data-reveal],
+.reveal-all [data-reveal="children"] > *,
+.reveal-all [data-scrub] .sw,
+.reveal-all [data-depth],
+.reveal-all [data-intro] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+.reveal-all .page-curtain {
+  display: none !important;
+}
+@media print {
+  .page-curtain,
+  header {
+    display: none !important;
+  }
+}
+.reveal-all .hero-section {
+  min-height: 900px !important;
+}
+.reveal-all [data-panel] {
+  height: 900px !important;
+}
+
+/* MADBYTE logo, coloured via currentColor */
+.logo-mark {
+  -webkit-mask: url("/logo-mask.png") center / contain no-repeat;
+  mask: url("/logo-mask.png") center / contain no-repeat;
 }
