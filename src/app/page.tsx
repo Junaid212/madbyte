@@ -20,7 +20,7 @@ export default function HomePage() {
       <FeaturedWork />
       <WhyMadbyte />
       <ProcessHorizontal />
-      {/* <Testimonials /> */}
+      <Testimonials />
       <CtaBand />
     </>
   );
