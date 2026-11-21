@@ -58,9 +58,9 @@ export function HeroVisual({ scopeRef }: { scopeRef: React.RefObject<HTMLElement
       </div>
 
       {/* Glowing orbs */}
-      <span data-depth="-30" className="absolute left-[14%] top-[34%] aspect-square w-[7%] rounded-full bg-ivory shadow-[0_0_40px_14px_rgba(239,239,237,0.45)]" />
-      <span data-depth="24" className="absolute right-[12%] top-[52%] aspect-square w-[3.5%] rounded-full bg-ivory/90 shadow-[0_0_24px_8px_rgba(239,239,237,0.4)]" />
-      <span data-depth="-18" className="absolute bottom-[34%] left-[10%] aspect-square w-[3%] rounded-full bg-champagne shadow-[0_0_20px_8px_rgba(222,198,166,0.5)]" />
+      {/* <span data-depth="-30" className="absolute left-[14%] top-[34%] aspect-square w-[7%] rounded-full bg-ivory shadow-[0_0_40px_14px_rgba(239,239,237,0.45)]" /> */}
+      {/* <span data-depth="24" className="absolute right-[12%] top-[52%] aspect-square w-[3.5%] rounded-full bg-ivory/90 shadow-[0_0_24px_8px_rgba(239,239,237,0.4)]" /> */}
+      {/* <span data-depth="-18" className="absolute bottom-[34%] left-[10%] aspect-square w-[3%] rounded-full bg-champagne shadow-[0_0_20px_8px_rgba(222,198,166,0.5)]" /> */}
 
       {/* Back screen: menu */}
       <div data-depth="-22" className="absolute left-[10%] top-[40%] w-[54%]">

@@ -17,7 +17,7 @@ export function ProcessHorizontal() {
 
   useScrollMotion(({ desktop }) => {
     const el = section.current;
-    if (!el || !desktop) return;
+    if (!el) return;
     const track = el.querySelector<HTMLElement>("[data-track]")!;
     const bar = el.querySelector<HTMLElement>("[data-bar]")!;
     const steps = gsap.utils.toArray<HTMLElement>("[data-step]", el);
@@ -62,32 +62,32 @@ export function ProcessHorizontal() {
 
   return (
     <section ref={section} id="process" className="relative bg-navy-2 text-ivory">
-      <div className="hs-pin flex flex-col justify-center py-24 md:py-32">
+      <div className="hs-pin flex flex-col justify-center py-16 md:py-32">
         <div className="container-x">
           <div className="flex items-end justify-between gap-8">
             <div>
               <SectionLabel num="05">How we work</SectionLabel>
               <SplitText as="h2" text={"From first sketch\nto *final launch.*"} className="display mt-6 text-big" />
             </div>
-            <p className="label hidden items-baseline gap-2 text-champagne lg:flex">
+            <p className="label flex items-baseline gap-2 text-champagne">
               <span data-count className="display text-3xl text-ivory">01</span>/ 05
             </p>
           </div>
-          <div aria-hidden className="mt-8 hidden h-px w-full bg-ivory/20 lg:block">
+          <div aria-hidden className="mt-6 h-px w-full bg-ivory/20 lg:mt-8">
             <div data-bar className="h-[3px] origin-left -translate-y-px bg-champagne" style={{ transform: "scaleX(0)" }} />
           </div>
         </div>
 
         <ol
           data-track
-          className="hs-track container-x mt-14 grid gap-0 lg:mt-16"
+          className="hs-track container-x mt-8 grid gap-0 md:mt-14 lg:mt-16"
         >
           {processSteps.map((s) => (
             <li
               key={s.num}
               data-step
               data-active="true"
-              className="hs-step group border-t border-ivory/20 py-8 transition-opacity duration-500 md:grid md:grid-cols-[8rem_1fr] md:gap-6 lg:data-[active=false]:opacity-35"
+              className="hs-step group border-t border-ivory/20 py-8 transition-opacity duration-500 md:grid md:grid-cols-[8rem_1fr] md:gap-6 data-[active=false]:opacity-35"
             >
               <span className="display block text-[clamp(3.5rem,9vw,8rem)] leading-[0.85] text-transparent [-webkit-text-stroke:1.5px_#DEC6A6]">
                 {s.num}

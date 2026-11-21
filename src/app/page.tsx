@@ -18,7 +18,7 @@ export default function HomePage() {
       <Intro />
       <ServicesStack />
       <FeaturedWork />
-      <WhyMadbyte />
+      {/* <WhyMadbyte /> */}
       <ProcessHorizontal />
       <Testimonials />
       <CtaBand />

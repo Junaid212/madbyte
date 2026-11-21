@@ -27,8 +27,25 @@ export function ServicesStack() {
 
   // Desktop: each panel slides over the previous one, which recedes slightly.
   useScrollMotion(({ desktop }) => {
-    if (!desktop || !ref.current) return;
+    if (!ref.current) return;
     const panels = gsap.utils.toArray<HTMLElement>("[data-panel]", ref.current);
+    if (!desktop) {
+      // Phones: panels are not pinned, so each one eases in as it scrolls into view.
+      panels.forEach((panel) => {
+        gsap.fromTo(
+          panel.querySelector("[data-panel-inner]"),
+          { y: 48, opacity: 0.35, scale: 0.96 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            ease: "none",
+            scrollTrigger: { trigger: panel, start: "top 92%", end: "top 45%", scrub: true },
+          },
+        );
+      });
+      return;
+    }
     panels.forEach((panel, i) => {
       const next = panels[i + 1];
       if (!next) return;
@@ -72,9 +89,9 @@ function Panel({ s, index }: { s: Service; index: number }) {
     <article
       data-panel
       id={`panel-${s.id}`}
-      className={cn("group relative lg:sticky lg:top-0 lg:h-svh", look.panel, look.text, "on-" + look.tone)}
+      className={cn("group relative lg:sticky lg:top-0 lg:h-svh rounded-t-[2rem] md:rounded-t-[4rem]", look.panel, look.text, "on-" + look.tone)}
     >
-      <div data-panel-inner className="container-x flex h-full flex-col justify-center py-16 will-change-transform lg:py-0">
+      <div data-panel-inner className="container-x flex h-full flex-col justify-center py-16 will-change-transform lg:py-0 ">
         <div className={cn("grid items-center gap-10 lg:grid-cols-12 lg:gap-16", look.flip && "lg:[&>*:first-child]:order-2")}>
           {/* Art */}
           <div className="lg:col-span-5">

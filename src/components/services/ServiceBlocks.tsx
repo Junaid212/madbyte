@@ -49,7 +49,7 @@ function EnquireLink({ s, className }: { s: Service; className?: string }) {
 /* 01 · BUILD — dark split with sticky title and a terminal-style deliverables list */
 export function BuildSection({ s }: { s: Service }) {
   return (
-    <section id={s.id} className="relative scroll-mt-0 bg-navy-2 py-24 text-ivory md:py-40">
+    <section id={s.id} className="relative scroll-mt-0 bg-navy-2 py-24 text-ivory md:py-20 rounded-t-[2rem] md:rounded-t-[4rem]">
       <div className="container-x grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32">
@@ -107,7 +107,7 @@ export function BuildSection({ s }: { s: Service }) {
 /* 02 · DESIGN — light, outlined giant title bleeding off the edge, boxed deliverables */
 export function DesignSection({ s }: { s: Service }) {
   return (
-    <section id={s.id} className="on-light relative overflow-hidden bg-ivory py-24 text-navy md:py-40">
+    <section id={s.id} className="on-light relative overflow-hidden bg-ivory py-24 text-navy md:py-20">
       <Parallax distance={-160} className="pointer-events-none absolute left-0 top-10 w-full select-none">
         <p aria-hidden className="display whitespace-nowrap text-[clamp(8rem,28vw,30rem)] leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(24,45,76,0.18)]">
           DESIGN DESIGN

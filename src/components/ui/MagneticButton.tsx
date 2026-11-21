@@ -75,8 +75,16 @@ export function MagneticButton({
   const inner = (
     <>
       {label ? (
-        <span className="roll">
-          <span data-text={label}>{label}</span>
+        <span className="relative inline-block h-[1.4em] overflow-hidden leading-[1.4]">
+          <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full group-focus-visible:-translate-y-full">
+            {label}
+          </span>
+          <span
+            aria-hidden
+            className="absolute left-0 top-full block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full group-focus-visible:-translate-y-full"
+          >
+            {label}
+          </span>
         </span>
       ) : (
         children

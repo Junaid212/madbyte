@@ -59,7 +59,7 @@ export function Header() {
           )}
         >
           <TransitionLink href="/" aria-label="MADBYTE home" className="relative z-[70]">
-            <Logo className={scrolled ? "h-7" : "h-9"} />
+            <Logo withText className={scrolled ? "h-7" : "h-9"} textClassName={scrolled ? "text-[1.05rem]" : "text-[1.25rem]"} />
           </TransitionLink>
 
           <nav aria-label="Primary" className="hidden items-center gap-10 lg:flex">
@@ -70,11 +70,19 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className="relative flex items-baseline gap-2 text-sm font-medium tracking-wide"
+                  className="relative flex items-baseline gap-2 text-sm font-medium tracking-wide group"
                 >
                   {/* <span className="label text-[0.6rem] text-champagne/80">0{i + 1}</span> */}
-                  <span className="roll">
-                    <span data-text={item.label}>{item.label}</span>
+                  <span className="relative inline-block h-[1.4em] overflow-hidden leading-[1.4]">
+                    <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full group-focus-visible:-translate-y-full">
+                      {item.label}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-full block text-champagne transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full group-focus-visible:-translate-y-full"
+                    >
+                      {item.label}
+                    </span>
                   </span>
                   <motion.span
                     aria-hidden

@@ -7,21 +7,22 @@ import { useScrollMotion } from "@/hooks/useScrollMotion";
 interface Props {
   children: ReactNode;
   className?: string;
-  /** Total travel in px (negative moves against scroll). Desktop only. */
+  /** Total travel in px (negative moves against scroll). Halved on phones. */
   distance?: number;
 }
 
-/** Scroll-scrubbed vertical drift using transforms only. Desktop only. */
+/** Scroll-scrubbed vertical drift using transforms only. */
 export function Parallax({ children, className, distance = -80 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   useScrollMotion(({ desktop }) => {
-    if (!desktop || !ref.current) return;
+    if (!ref.current) return;
+    const d = desktop ? distance : distance * 0.5; // gentler drift on phones
     gsap.fromTo(
       ref.current,
-      { y: -distance / 2 },
+      { y: -d / 2 },
       {
-        y: distance / 2,
+        y: d / 2,
         ease: "none",
         scrollTrigger: { trigger: ref.current, start: "top bottom", end: "bottom top", scrub: true },
       },

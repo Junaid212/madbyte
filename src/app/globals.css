@@ -131,7 +131,7 @@ button:hover > .roll > span,
 a:focus-visible > .roll > span,
 button:focus-visible > .roll > span,
 .roll-host:hover .roll > span {
-  transform: translateY(-100%);
+  transform: translateY(-50%);
 }
 
 /* ---------- Scroll animation initial states ----------
@@ -263,7 +263,7 @@ button:focus-visible > .roll > span,
   }
 }
 
-/* Horizontal process (desktop only, enabled from JS) */
+/* Horizontal process (enabled from JS, all sizes) */
 [data-hscroll="on"] .hs-track {
   display: flex;
   width: max-content;
@@ -274,8 +274,14 @@ button:focus-visible > .roll > span,
 [data-hscroll="on"] .hs-step {
   display: block;
   flex: none;
-  width: min(34vw, 520px);
-  padding-top: 2rem;
+  width: min(80vw, 520px);
+  padding-top: 1.5rem;
+}
+@media (min-width: 1024px) {
+  [data-hscroll="on"] .hs-step {
+    width: min(34vw, 520px);
+    padding-top: 2rem;
+  }
 }
 [data-hscroll="on"] .hs-step > div {
   margin-top: 1.5rem;

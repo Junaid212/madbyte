@@ -10,7 +10,7 @@ export function Footer() {
       <div className="container-x pt-20 md:pt-14">
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Logo className="h-12" />
+            <Logo withText className="h-12" textClassName="text-[1.6rem]" />
             <p className="mt-6 max-w-sm text-lead text-ivory/80">{site.tagline}</p>
             <p className="label mt-3 text-champagne">{site.positioning}</p>
           </div>
