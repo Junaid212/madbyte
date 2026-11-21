@@ -7,7 +7,7 @@ import { FooterWordmark } from "./FooterWordmark";
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-navy text-ivory">
-      <div className="container-x pt-20 md:pt-14">
+      <div className="container-x pt-10 md:pt-14">
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
             <Logo withText className="h-12" textClassName="text-[1.6rem]" />
@@ -67,7 +67,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-2 border-t border-ivory/15 py-6 text-xs text-ivory/60 sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} MADBYTE. All rights reserved.</p>
-          <p>Demo projects on this site are concepts, not client work.</p>
+          {/* <p>Demo projects on this site are concepts, not client work.</p> */}
         </div>
       </div>
     </footer>

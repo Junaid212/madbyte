@@ -8,6 +8,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Cursor } from "@/components/ui/Cursor";
+import { BackToTop } from "@/components/layout/BackToTop";
+import { IntroLoader } from "@/components/layout/IntroLoader";
 
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -60,7 +62,7 @@ export const viewport: Viewport = {
  * Fail-safe: if scripts never run (blocked, slow, errored) the flag is removed
  * after 4s so content is never left hidden.
  */
-const animFlag = `try{document.documentElement.classList.add('anim');setTimeout(function(){if(!document.documentElement.dataset.motion)document.documentElement.classList.remove('anim')},4000)}catch(e){}`;
+const animFlag = `try{if(sessionStorage.getItem('mb-intro'))document.documentElement.classList.add('intro-done')}catch(e){}try{document.documentElement.classList.add('anim');setTimeout(function(){if(!document.documentElement.dataset.motion)document.documentElement.classList.remove('anim')},4000)}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -81,7 +83,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <SmoothScroll>
           <PageTransition>
+            <IntroLoader />
             <ScrollProgress />
+            <BackToTop />
             <Header />
             <main id="main">{children}</main>
             <Footer />

@@ -170,7 +170,7 @@ export function DesignSection({ s }: { s: Service }) {
 /* 03 · CREATE — champagne poster composition */
 export function CreateSection({ s }: { s: Service }) {
   return (
-    <section id={s.id} className="on-light relative overflow-hidden bg-champagne py-24 text-navy md:py-40">
+    <section id={s.id} className="on-light relative overflow-hidden bg-champagne py-24 text-navy md:py-20">
       <div className="container-x relative">
         <div className="flex items-start justify-between gap-6">
           <p className="label">{s.num} · {s.kicker}</p>
@@ -223,7 +223,7 @@ export function CreateSection({ s }: { s: Service }) {
 /* 04 · GROW — dark, statement-style benefits and a rising bar chart */
 export function GrowSection({ s }: { s: Service }) {
   return (
-    <section id={s.id} className="relative overflow-hidden bg-navy py-24 text-ivory md:py-40">
+    <section id={s.id} className="relative overflow-hidden bg-navy py-24 text-ivory md:py-20">
       <div className="container-x">
         <p className="label text-champagne">{s.num} · {s.kicker}</p>
         <div className="mt-8 grid items-end gap-12 lg:grid-cols-12">

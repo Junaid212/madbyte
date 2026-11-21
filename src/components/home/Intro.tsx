@@ -9,7 +9,7 @@ import { Parallax } from "@/components/ui/Parallax";
 
 export function Intro() {
   return (
-    <section className="on-light relative -mt-10 rounded-t-[2rem] bg-ivory pb-24 pt-20 text-navy md:-mt-16 md:rounded-t-[4rem] md:pb-40 md:pt-32">
+    <section className="on-light relative -mt-10 rounded-t-[2rem] bg-ivory pb-24 pt-20 text-navy md:-mt-16 md:rounded-t-[4rem] md:pb-20 md:pt-32">
       <div className="container-x">
         <SectionLabel num="01">The MADBYTE approach</SectionLabel>
 
@@ -26,7 +26,7 @@ export function Intro() {
               <dl className="grid grid-cols-3 gap-4 lg:grid-cols-1 lg:gap-10">
                 {[
                   { n: 4, l: "Divisions, one studio" },
-                  { n: 6, l: "Founders, hands-on" },
+                  { n: 6, l: "Skillset, creative force" },
                   { n: 1, l: "Mad vision" },
                 ].map((s) => (
                   <div key={s.l}>

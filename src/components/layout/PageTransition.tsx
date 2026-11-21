@@ -10,6 +10,7 @@ import {
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, useAnimationControls } from "framer-motion";
+import { Loader } from "./Loader";
 
 type Navigate = (href: string) => void;
 const TransitionContext = createContext<Navigate | null>(null);
@@ -80,9 +81,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
         className="page-curtain pointer-events-none fixed inset-0 z-[90] flex items-center justify-center bg-navy"
         style={{ willChange: "transform" }}
       >
-        <span className="display text-2xl text-champagne">
-          MAD<span className="font-light text-ivory">BYTE</span>
-        </span>
+        <Loader compact />
       </motion.div>
     </TransitionContext.Provider>
   );

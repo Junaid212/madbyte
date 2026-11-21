@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="grain relative isolate overflow-hidden bg-navy pb-28 pt-36 text-ivory md:pb-44 md:pt-48">
+    <section className="grain relative isolate overflow-hidden bg-navy pb-28 pt-36 text-ivory md:pb-20 md:pt-28">
       <div aria-hidden className="absolute -right-40 top-0 -z-10 size-[55vw] rounded-full bg-navy-2/60 blur-3xl" />
       <div className="container-x">
         <SectionLabel>Contact</SectionLabel>

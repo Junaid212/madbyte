@@ -52,7 +52,7 @@ export function FeaturedWork() {
   };
 
   return (
-    <section id="work" className="on-light relative bg-mist py-24 text-navy md:py-36">
+    <section id="work" className="on-light relative bg-mist py-24 text-navy md:py-20">
       <div className="container-x">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>

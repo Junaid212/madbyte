@@ -28,7 +28,7 @@ export default function AboutPage() {
       />
 
       {/* Story */}
-      <section className="on-light relative -mt-10 rounded-t-[2rem] bg-ivory py-24 text-navy md:-mt-16 md:rounded-t-[4rem] md:py-40">
+      <section className="on-light relative -mt-10 rounded-t-[2rem] bg-ivory py-24 text-navy md:-mt-16 md:rounded-t-[4rem] md:py-20">
         <div className="container-x grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionLabel num="01">Our story</SectionLabel>
@@ -122,7 +122,7 @@ export default function AboutPage() {
       </section> */}
 
       {/* Mission / vision / values */}
-      <section className="on-light bg-ivory py-24 text-navy md:py-40">
+      <section className="on-light bg-ivory py-24 text-navy md:py-20">
         <div className="container-x">
           <div className="grid gap-16 md:grid-cols-2 md:gap-24">
             <Reveal>

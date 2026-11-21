@@ -317,3 +317,49 @@ button:focus-visible > .roll > span,
   -webkit-mask: url("/logo-mask.png") center / contain no-repeat;
   mask: url("/logo-mask.png") center / contain no-repeat;
 }
+
+@keyframes wave {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Brand loader ---------- */
+.px-out {
+  animation: px-out 0.3s steps(3, end) both;
+}
+@keyframes px-out {
+  to {
+    opacity: 0;
+  }
+}
+.loader-name {
+  opacity: 0;
+  animation: loader-in 0.5s 0.9s var(--ease-out-expo) forwards;
+}
+@keyframes loader-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.loader-bit {
+  opacity: 0.2;
+  animation: loader-bit 1.1s steps(1) infinite;
+}
+@keyframes loader-bit {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 1;
+  }
+}
+html.intro-done .intro-loader {
+  display: none;
+}

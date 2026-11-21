@@ -56,7 +56,7 @@ export function ServicesStack() {
 
   return (
     <section ref={ref} id="services" className="bg-navy text-ivory">
-      <div className="container-x pb-14 pt-24 md:pb-20 md:pt-36">
+      <div className="container-x pb-14 pt-24 md:pb-20 md:pt-20">
         <SectionLabel num="02">What we do</SectionLabel>
         <div className="mt-8 grid items-end gap-8 lg:grid-cols-12">
           <SplitText

@@ -55,7 +55,7 @@ export default function ServicesPage() {
       <GrowSection s={getService("grow")} />
 
       {/* Cross-disciplinary */}
-      <section className="on-light bg-mist py-24 text-navy md:py-40">
+      <section className="on-light bg-mist py-24 text-navy md:py-20">
         <div className="container-x">
           <SectionLabel num="05">Better together</SectionLabel>
           <SplitText as="h2" text={"The mad\n*in-between.*"} accentClassName="text-navy-2 italic" className="display mt-8 text-huge" />

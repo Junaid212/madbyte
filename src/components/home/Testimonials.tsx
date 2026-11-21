@@ -24,16 +24,16 @@ export function Testimonials() {
   }, [embla, sync]);
 
   return (
-    <section className="on-light bg-ivory py-24 text-navy md:py-40">
+    <section className="on-light bg-ivory py-24 text-navy md:py-20">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <SectionLabel num="06">Kind words</SectionLabel>
             <SplitText as="h2" text={"What clients\nwill *say.*"} accentClassName="text-navy-2 italic" className="display mt-8 text-big" />
           </div>
-          <p className="label border border-navy/40 px-4 py-2 text-navy-2">
+          {/* <p className="label border border-navy/40 px-4 py-2 text-navy-2">
             Placeholder content · not real clients
-          </p>
+          </p> */}
         </div>
 
         <div
