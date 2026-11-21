@@ -20,7 +20,6 @@ function CursorInner() {
   const label = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const el = ring.current;
     const text = label.current;
     if (!el || !text) return;

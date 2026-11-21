@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { motion, useAnimationControls, useReducedMotion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 
 type Navigate = (href: string) => void;
 const TransitionContext = createContext<Navigate | null>(null);
@@ -31,7 +31,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const controls = useAnimationControls();
-  const reduce = useReducedMotion();
+  const reduce = false; // transitions play regardless of the OS reduce-motion setting
   const busy = useRef(false);
   const pending = useRef(false);
 

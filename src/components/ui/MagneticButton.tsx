@@ -44,7 +44,7 @@ export function MagneticButton({
   useEffect(() => {
     const el = wrap.current;
     if (!el || !magnetic) return;
-    const mq = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
     if (!mq.matches) return;
     const xTo = gsap.quickTo(el, "x", { duration: 0.6, ease: "elastic.out(1, 0.5)" });
     const yTo = gsap.quickTo(el, "y", { duration: 0.6, ease: "elastic.out(1, 0.5)" });

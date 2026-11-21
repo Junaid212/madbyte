@@ -24,8 +24,8 @@ export function useScrollMotion(
       const mm = gsap.matchMedia();
       mm.add(
         {
-          motion: "(prefers-reduced-motion: no-preference)",
-          desktop: "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+          motion: "(min-width: 0px)",
+          desktop: "(min-width: 1024px)",
         },
         (mc) => {
           const cond = mc.conditions as { motion: boolean; desktop: boolean };

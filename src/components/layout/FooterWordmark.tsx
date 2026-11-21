@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import { useFinePointer } from "@/hooks/useFinePointer";
 import { Logo } from "./Logo";
 
 const LETTERS = "MADBYTE".split("");
@@ -14,10 +13,8 @@ const LETTERS = "MADBYTE".split("");
  */
 export function FooterWordmark() {
   const ref = useRef<HTMLDivElement>(null);
-  const fine = useFinePointer();
 
   const onMove = (e: React.PointerEvent) => {
-    if (!fine || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const spans = ref.current?.querySelectorAll<HTMLElement>("[data-l]");
     spans?.forEach((s) => {
       const r = s.getBoundingClientRect();

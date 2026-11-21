@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { services, type Service, type ServiceId } from "@/data/services";
-import { gsap } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useScrollMotion } from "@/hooks/useScrollMotion";
 import { cn } from "@/lib/cn";
 import { SplitText } from "@/components/ui/SplitText";
@@ -26,26 +26,18 @@ export function ServicesStack() {
   const ref = useRef<HTMLElement>(null);
 
   // Desktop: each panel slides over the previous one, which recedes slightly.
+  // Each panel pins, then the next one slides over it while it recedes slightly.
+  // On phones a panel can be taller than the screen, so it pins when its BOTTOM
+  // reaches the bottom of the viewport (negative top) and stays fully readable.
   useScrollMotion(({ desktop }) => {
     if (!ref.current) return;
     const panels = gsap.utils.toArray<HTMLElement>("[data-panel]", ref.current);
-    if (!desktop) {
-      // Phones: panels are not pinned, so each one eases in as it scrolls into view.
-      panels.forEach((panel) => {
-        gsap.fromTo(
-          panel.querySelector("[data-panel-inner]"),
-          { y: 48, opacity: 0.35, scale: 0.96 },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            ease: "none",
-            scrollTrigger: { trigger: panel, start: "top 92%", end: "top 45%", scrub: true },
-          },
-        );
+    const setTops = () =>
+      panels.forEach((p) => {
+        p.style.top = desktop ? "0px" : `${Math.min(0, window.innerHeight - p.offsetHeight)}px`;
       });
-      return;
-    }
+    setTops();
+    ScrollTrigger.addEventListener("refreshInit", setTops);
     panels.forEach((panel, i) => {
       const next = panels[i + 1];
       if (!next) return;
@@ -56,6 +48,10 @@ export function ServicesStack() {
         scrollTrigger: { trigger: next, start: "top bottom", end: "top top", scrub: true },
       });
     });
+    return () => {
+      ScrollTrigger.removeEventListener("refreshInit", setTops);
+      panels.forEach((p) => (p.style.top = ""));
+    };
   }, ref);
 
   return (
@@ -89,9 +85,9 @@ function Panel({ s, index }: { s: Service; index: number }) {
     <article
       data-panel
       id={`panel-${s.id}`}
-      className={cn("group relative lg:sticky lg:top-0 lg:h-svh rounded-t-[2rem] md:rounded-t-[4rem]", look.panel, look.text, "on-" + look.tone)}
+      className={cn("group sticky top-0 min-h-svh lg:h-svh rounded-t-[2rem] md:rounded-t-[4rem]", look.panel, look.text, "on-" + look.tone)}
     >
-      <div data-panel-inner className="container-x flex h-full flex-col justify-center py-16 will-change-transform lg:py-0 ">
+      <div data-panel-inner className="container-x flex min-h-svh flex-col justify-center py-16 will-change-transform lg:h-full lg:min-h-0 lg:py-0">
         <div className={cn("grid items-center gap-10 lg:grid-cols-12 lg:gap-16", look.flip && "lg:[&>*:first-child]:order-2")}>
           {/* Art */}
           <div className="lg:col-span-5">

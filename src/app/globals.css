@@ -247,21 +247,6 @@ button:focus-visible > .roll > span,
   animation-play-state: paused;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .spin-slow,
-  .spin-rev,
-  .wobble,
-  .bit,
-  .marquee-track {
-    animation: none;
-  }
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
-}
 
 /* Horizontal process (enabled from JS, all sizes) */
 [data-hscroll="on"] .hs-track {
