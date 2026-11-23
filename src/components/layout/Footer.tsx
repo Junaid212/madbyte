@@ -3,6 +3,7 @@ import { services } from "@/data/services";
 import { TransitionLink } from "@/components/ui/TransitionLink";
 import { Logo } from "./Logo";
 import { FooterWordmark } from "./FooterWordmark";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -10,7 +11,7 @@ export function Footer() {
       <div className="container-x pt-10 md:pt-14">
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Logo withText className="h-12" textClassName="text-[1.6rem]" />
+            <Link href="/"><Logo withText className="h-12" textClassName="text-[1.6rem]" /></Link>
             <p className="mt-6 max-w-sm text-lead text-ivory/80">{site.tagline}</p>
             <p className="label mt-3 text-champagne">{site.positioning}</p>
           </div>
@@ -49,7 +50,7 @@ export function Footer() {
                   {site.email}
                 </a>
               </li>
-              <li className="text-ivory/70">{site.location}</li>
+              <li className="text-ivory/70">{site.phone}</li>
             </ul>
             <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
               {site.socials.map((s) => (

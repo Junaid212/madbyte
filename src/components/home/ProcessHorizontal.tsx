@@ -6,6 +6,11 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useScrollMotion } from "@/hooks/useScrollMotion";
 import { SplitText } from "@/components/ui/SplitText";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { cn } from "@/lib/cn";
+import { sectionTone } from "@/config/sectionTheme";
+
+// Switch light/dark in src/config/sectionTheme.ts
+const light = sectionTone("process") === "light";
 
 /**
  * Desktop: vertical scroll drives a horizontal timeline (CSS `position: sticky`
@@ -61,20 +66,20 @@ export function ProcessHorizontal() {
   }, section);
 
   return (
-    <section ref={section} id="process" className="relative bg-navy-2 text-ivory">
+    <section ref={section} id="process" className={cn("relative", light ? "on-light bg-mist text-navy" : "bg-navy-2 text-ivory")}>
       <div className="hs-pin flex flex-col justify-center py-16 md:py-32">
         <div className="container-x">
           <div className="flex items-end justify-between gap-8">
             <div>
               <SectionLabel num="05">How we work</SectionLabel>
-              <SplitText as="h2" text={"From first sketch\nto *final launch.*"} className="display mt-6 text-big" />
+              <SplitText as="h2" text={"From first sketch\nto *final launch.*"} accentClassName={light ? "text-navy-2 italic" : "text-champagne"} className="display mt-6 text-big" />
             </div>
-            <p className="label flex items-baseline gap-2 text-champagne">
-              <span data-count className="display text-3xl text-ivory">01</span>/ 05
+            <p className={cn("label flex items-baseline gap-2", light ? "text-navy-2" : "text-champagne")}>
+              <span data-count className={cn("display text-3xl", light ? "text-navy" : "text-ivory")}>01</span>/ 05
             </p>
           </div>
-          <div aria-hidden className="mt-6 h-px w-full bg-ivory/20 lg:mt-8">
-            <div data-bar className="h-[3px] origin-left -translate-y-px bg-champagne" style={{ transform: "scaleX(0)" }} />
+          <div aria-hidden className={cn("mt-6 h-px w-full lg:mt-8", light ? "bg-navy/20" : "bg-ivory/20")}>
+            <div data-bar className={cn("h-[3px] origin-left -translate-y-px", light ? "bg-navy" : "bg-champagne")} style={{ transform: "scaleX(0)" }} />
           </div>
         </div>
 
@@ -87,14 +92,14 @@ export function ProcessHorizontal() {
               key={s.num}
               data-step
               data-active="true"
-              className="hs-step group border-t border-ivory/20 py-8 transition-opacity duration-500 md:grid md:grid-cols-[8rem_1fr] md:gap-6 data-[active=false]:opacity-35"
+              className={cn("hs-step group border-t py-8 transition-opacity duration-500 md:grid md:grid-cols-[8rem_1fr] md:gap-6 data-[active=false]:opacity-35", light ? "border-navy/20" : "border-ivory/20")}
             >
-              <span className="display block text-[clamp(3.5rem,9vw,8rem)] leading-[0.85] text-transparent [-webkit-text-stroke:1.5px_#DEC6A6]">
+              <span className={cn("display block text-[clamp(3.5rem,9vw,8rem)] leading-[0.85] text-transparent", light ? "[-webkit-text-stroke:1.5px_#30415F]" : "[-webkit-text-stroke:1.5px_#DEC6A6]")}>
                 {s.num}
               </span>
               <div className="mt-4 md:mt-0">
                 <h3 className="display text-[clamp(1.8rem,3.4vw,3.4rem)] leading-none">{s.title}</h3>
-                <p className="mt-4 max-w-md text-ivory/80">{s.text}</p>
+                <p className={cn("mt-4 max-w-md", light ? "text-navy-2" : "text-ivory/80")}>{s.text}</p>
               </div>
             </li>
           ))}

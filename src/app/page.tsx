@@ -17,10 +17,10 @@ export default function HomePage() {
       </div>
       <Intro />
       <ServicesStack />
-      <FeaturedWork />
+      {/* <FeaturedWork /> */}
       {/* <WhyMadbyte /> */}
       <ProcessHorizontal />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <CtaBand />
     </>
   );
